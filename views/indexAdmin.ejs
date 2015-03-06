@@ -1,0 +1,148 @@
+<%- include layouts/header.ejs %>
+<div id="wrapper">
+            <div class="page-header">
+                <%if(nom){
+                    %>
+                <h2>Frais du consultant <%=nom%> du mois: <%=mois%>/<%=annee%></h2>
+          <%  }else{%>
+
+            <h2>Frais des consultant</h2>
+          <%} %>
+
+
+
+
+            </div>
+
+            <div class="page-container">
+        <div class="page-data">
+            
+            <form method="post" action="/admin/index">
+
+                <table cellpadding="11">
+                <tr>
+                    <td class="label">Consultant</td>
+                    <td>:  
+                        
+                        
+                        <select name="consultant" required>
+                            <% 
+                            for(var i = 0;i < data.length;i++) { %>
+                              <option value="<%=data[i].nom %>"><%=data[i].nom%> <%=data[i].prenom%> </option> 
+                             <!--  toUpperCase() -->
+                              <% }
+                                %>
+                        </select>
+
+                       
+                    </td>
+                 </tr>
+                 <tr>
+                    <td class="label">Note de frais du mois</td>
+                    <td>: 
+                            <select name="mois">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <select name="annee">
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                            </select>
+                    </td>
+                        
+                 </tr>
+
+                 <tr>
+                    <td class="label"></td>
+                    <td>
+                        &nbsp; <input type="submit" name="submit" value="Consulter">
+                    </td>
+                 </tr>
+                </table>
+            </form>
+
+             <div class="data-table">
+            <table border="1" cellpadding="7" cellspacing="10">
+                <tr>
+                    <th hidden width="50px">No</th>
+                    <th>Date</th>
+                    <th>libellé</th>
+                    <th>Client</th>
+                    <th>Type</th>
+                    <th>Coût(€)</th>
+                    <th>Vos Commentaires</th>
+                    <th>Status</th>
+                    <th>Commentaire du résponsable</th>
+                    <th >Action</th>
+                </tr>
+                            
+                <% if(data2.length){ 
+                                
+                 for(var i = 0;i < data2.length;i++) { %>
+                 
+                <tr>
+                    <td hidden><%=data2[i].fraisId %></td>
+                    <td><%=data2[i].date%></td>
+                    <td><%=data2[i].libelle%></td>
+                    <td><%=data2[i].client%></td>
+                    <td><%=data2[i].type%></td>
+                    <td><%=data2[i].cout%></td>
+                    <td><%=data2[i].commentaireConsultant%></td>
+                    <td><%=data2[i].status%></td>                   
+                    <td><%=data2[i].commentaireAdmin%></td>
+                    <td>
+                          <% if(data2[i].status=='En cours'){
+                        
+                        %>  
+                        <a class="a-inside edit" href="../admin/valider/<%=data2[i].fraisId%>">Valider</a>
+                        <% } %>
+                       <a class="a-inside edit" href="../admin/commenter/<%=data2[i].fraisId%>">Commenter</a>
+                    </td>
+                </tr>
+            <% }
+            
+             }else{ %>
+                 <tr>
+                    <td colspan="3">Aucun Frais</td>
+                 </tr>
+            <% } %>
+
+
+                
+            </table>
+
+        </br>
+        </br>
+        </br>
+        </br>
+
+             
+         </div> 
+            
+        </div>
+        
+<%- include layouts/footer.ejs %>

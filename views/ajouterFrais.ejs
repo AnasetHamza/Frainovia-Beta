@@ -1,0 +1,61 @@
+<%- include layouts/header.ejs %>
+<div id="wrapper">
+            <div class="page-header"><h2>Ajouter Frais</h2></div>
+            <div class="page-container">
+        <div class="page-data">
+            
+            <form method="post" action="/frais/add">
+
+                <table cellpadding="11">
+
+                
+                <tr>
+                    <td class="label">Date du Frais</td>
+                    <td>: <input type="date" name="date" required></td>
+                 </tr>
+                <tr>
+                    <td class="label">Libellé</td>
+                    <td>: <input type="text" name="libelle" required></td>
+                 </tr>
+                <tr>
+                    <td class="label">Client</td>
+                    <td>: <input type="text" name="client" required></td>
+                </tr>
+                <tr>
+                    <td class="label">Type</td>
+                    <td>:  
+                        <select name="type" required>
+                              <option value="voyage">Voyage</option>
+                              <option value="transport">Transport</option>
+                              <option value="hotel">Hotel</option>
+                              <option value="restaurant">Restaurant</option>
+                              <option value="divers">Divers</option>
+                        </select>
+
+                       
+                    </td>
+                 </tr>
+                <tr>
+                    <td class="label">Coût(€)</td>
+                    <td>: <input type="text" name="cout" required></td>
+                </tr>
+                <tr>
+                    <td class="label" valign="top">Vos Commentaires</td>
+                    <td valign="top">: 
+                        <textarea name="commentaireConsultant" required cols="30" rows="5"></textarea>
+                    </td>
+                </tr>
+
+                 <tr>
+                    <td class="label"></td>
+                    <td>
+                        &nbsp; <input type="submit" name="submit" value="Save">
+                       <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
+                    </td>
+                 </tr>
+                </table>
+            </form>
+            
+        </div>
+        
+<%- include layouts/footer.ejs %>

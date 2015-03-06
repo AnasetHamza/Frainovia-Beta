@@ -1,0 +1,34 @@
+{
+  "name": "Frainovia",
+  "version": "1.0.0",
+  "description": "Application de gestion des notes de frais pour Leanovia",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.12.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.3.4",
+    "cookie-session": "^1.1.0",
+    "ejs": "^1.0.0",
+    "express": "^4.12.2",
+    "mysql": "^2.5.5",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AnasetHamza/Frainovia"
+  },
+  "keywords": [
+    "Frainovia"
+  ],
+  "author": "Anas&Hamza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnasetHamza/Frainovia/issues"
+  },
+  "homepage": "https://github.com/AnasetHamza/Frainovia"
+}

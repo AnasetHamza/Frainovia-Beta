@@ -1,0 +1,116 @@
+<%- include layouts/header.ejs %>
+
+        <div class="page-data">
+         <div class="data-btn">
+           <button onClick="addUser();">+ Ajouter Frais</button>
+         </div>
+         <div class="data-table">
+            <table border="1" cellpadding="7" cellspacing="7">
+                <tr>
+                    <th width="50px">No</th>
+                    <th>Date</th>
+                    <th>libellé</th>
+                    <th>Client</th>
+                    <th>Type</th>
+                    <th>Coût(€)</th>
+                    <th>Vos Commentaires</th>
+                    <th>Status</th>
+                    <th>Commentaire du résponsable</th>
+                    <th width="150px">Action</th>
+                </tr>
+                               
+                <% if(data.length){ 
+                                
+                 for(var i = 0;i < data.length;i++) { %>
+                 
+                <tr>
+                    <td><%=data[i].fraisId %></td>
+                    <td><%=data[i].date%></td>
+                    <td><%=data[i].libelle%></td>
+                    <td><%=data[i].client%></td>
+                    <td><%=data[i].type%></td>
+                    <td><%=data[i].cout%></td>
+                    <td><%=data[i].commentaireConsultant%></td>
+                    <td><%=data[i].status%></td>                   
+                    <td><%=data[i].commentaireAdmin%></td>
+                    <td>
+                        <a class="a-inside edit" href="../frais/edit/<%=data[i].fraisId%>">Editer</a>
+                       
+                        <a class="a-inside delete" href="../frais/delete/<%=data[i].fraisId%>">Retirer</a>
+                       
+                    </td>
+                </tr>
+            <% }
+            
+             }else{ %>
+                 <tr>
+                    <td colspan="3">No user</td>
+                 </tr>
+            <% } %>
+
+
+                
+            </table>
+
+        </br>
+        </br>
+        </br>
+        </br>
+
+             
+         </div>
+         <form method="post" action="/frais/list_mois">
+
+                <table>
+
+                
+                <tr>
+                    <td class="label">Note de frais du</td>
+                    <td>: 
+                            <select name="mois">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <select name="annee">
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                            </select>
+                    </td>
+                        
+                 </tr>
+
+                 <tr>
+                    <td class="label"></td>
+                    <td>
+                        &nbsp; <input type="submit" name="submit" value="Consulter">
+                    </td>
+                 </tr>
+                </table>
+            </form>
+        </div>
+        
+<%- include layouts/footer.ejs %>
