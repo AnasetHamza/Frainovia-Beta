@@ -1,4 +1,4 @@
-Application de gestiond des notes de frais pour Leanovia
+Application de gestion des notes de frais pour Leanovia
 
 Database: Mysql
 Dump:erp_db
