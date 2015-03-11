@@ -1,6 +1,7 @@
 var express    = require("express");
 var path = require('path');
 
+
 var fs = require('fs');
 var https = require('https');
 
@@ -12,17 +13,6 @@ var flash    = require('connect-flash');
 
 var app = express();
 
-
-
-
-var server=https.createServer({
-	  
-	  cert: fs.readFileSync(__dirname+'/my.crt'),
-	  key: fs.readFileSync(__dirname+'/my.key')
- 	  
-	}
-
-	,app);
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -135,4 +125,24 @@ function isLoggedIn(req, res, next) {
 }
 
 
-server.listen(3000);
+
+// There are many useful environment variables available in process.env.
+// VCAP_APPLICATION contains useful information about a deployed application.
+var appInfo = JSON.parse(process.env.VCAP_APPLICATION || "{}");
+// TODO: Get application information and use it in your app.
+
+// VCAP_SERVICES contains all the credentials of services bound to
+// this application. For details of its content, please refer to
+// the document or sample of each service.
+var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
+// TODO: Get service credentials and communicate with bluemix services.
+
+//// The IP address of the Cloud Foundry DEA (Droplet Execution Agent) that hosts this application:
+//var host = (process.env.VCAP_APP_HOST || 'localhost');
+//// The port on the DEA for communication with the application:
+//var port = (process.env.VCAP_APP_PORT || 3000);
+// Start server
+var acces=require('./config/ipadress')
+
+app.listen(acces.port,acces.host);
+console.log('App started on port ' + acces.port);

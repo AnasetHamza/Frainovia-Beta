@@ -4,15 +4,9 @@
 var LocalStrategy   = require('passport-local').Strategy;
 
 var mysql      = require('mysql');
+var dbconfig = require('./database');
  
-var pool      =    mysql.createPool({
-    connectionLimit : 85, //important
-    host     : 'localhost',
-    user     : 'root',
-    password : 'root',
-    database : 'erp_db',
-    debug    :  false
-});
+var pool      =    mysql.createPool(dbconfig.db);
 
 
 // expose this function to our app using module.exports

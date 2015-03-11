@@ -4,14 +4,9 @@
  */
 var mysql      = require('mysql');
  
-var pool      =    mysql.createPool({
-    connectionLimit : 85, //important
-    host     : 'localhost',
-    user     : 'root',
-    password : 'root',
-    database : 'erp_db',
-    debug    :  false
-});
+var dbconfig = require('../config/database');
+ 
+var pool      =    mysql.createPool(dbconfig.db);
 
 
 exports.index = function(req, res){
