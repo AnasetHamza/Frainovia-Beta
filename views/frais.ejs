@@ -35,7 +35,7 @@
                  for(var i = 0;i < data.length;i++) { %>
                  
                 <tr>
-                    <td hidden><%=data[i].fraisId %></td>
+                    <td hidden><%=data[i].id %></td>
                     <td><%=data[i].date%></td>
                     <td><%=data[i].libelle%></td>
                     <td><%=data[i].client%></td>
@@ -48,8 +48,8 @@
                        <% if(data[i].status=='En cours'){
                         
                         %>                
-                        <a class="a-inside edit" href="../frais/edit/<%=data[i].fraisId%>">Editer</a>     
-                        <a class="a-inside delete" href="../frais/delete/<%=data[i].fraisId%>">Retirer</a>
+                        <a class="a-inside edit" href="../frais/edit/<%=data[i].id%>">Editer</a>     
+                        <a class="a-inside delete" href="../frais/delete/<%=data[i].id%>">Retirer</a>
                        <% } %>
                     </td>
                 </tr>
